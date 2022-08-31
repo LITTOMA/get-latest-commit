@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Get latest commit info
         id: latest_commit
-        uses: ./
+        uses: LITTOMA/get-latest-commit@main
         with:
           owner: "LITTOMA"
           repo: "get-latest-commit"
