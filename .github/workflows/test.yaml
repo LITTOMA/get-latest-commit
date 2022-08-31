@@ -13,7 +13,7 @@ jobs:
         with:
           owner: "LITTOMA"
           repo: "get-latest-commit"
-          branch: "master"
+          branch: "main"
           token: ${{ secrets.TOKEN }}
       - name: Print latest commit info
         run: |
