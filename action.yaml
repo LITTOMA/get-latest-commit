@@ -1,0 +1,34 @@
+# action.yaml
+name: "Get latest commit infomation of a repo"
+description: "Call GitHub RESTful API and get the result"
+inputs:
+  owner:
+    description: "The repo owner"
+    required: true
+  repo:
+    description: "The repo name"
+    required: true
+  branch:
+    description: "The branch name"
+    required: true
+    default: "master"
+  token:
+    description: "Personal access token"
+    required: true
+outputs:
+  sha:
+    description: "Commit SHA"
+  author:
+    description: "Commit author"
+  author_email:
+    description: "Commit author email"
+  message:
+    description: "Commit message"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.owner }}
+    - ${{ inputs.repo }}
+    - ${{ inputs.branch }}
+    - ${{ inputs.token }}

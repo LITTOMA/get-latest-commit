@@ -1,0 +1,24 @@
+name: Test get latest commit info
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Get latest commit info
+    steps:
+      - name: Get latest commit info
+        id: latest_commit
+        uses: ./
+        with:
+          owner: "LITTOMA"
+          repo: "get-latest-commit"
+          branch: "master"
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print latest commit info
+        run: |
+          echo "Latest commit SHA: ${{ steps.latest_commit.outputs.sha }}"
+          echo "Latest commit author: ${{ steps.latest_commit.outputs.author }}"
+          echo "Latest commit author email: ${{ steps.latest_commit.outputs.author_email }}"
+          echo "Latest commit message: ${{ steps.latest_commit.outputs.message }}"
+          echo "Test passed!"
